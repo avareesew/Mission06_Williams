@@ -2,6 +2,8 @@
 
 namespace Mission06_Williams.Models
 {
+    //creating the movie submission class, based 
+    //the database off this model
     public class MovieSubmission
     {
         [Key]
