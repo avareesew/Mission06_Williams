@@ -15,9 +15,16 @@ namespace Mission06_Williams.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult EnterMovie()
         {
-            return View();
+            return View("EnterMovie");
+        }
+
+        [HttpPost]
+        public IActionResult EnterMovie(ApplicationBuilder response)
+        {
+            return View("Confirmation");
         }
 
      

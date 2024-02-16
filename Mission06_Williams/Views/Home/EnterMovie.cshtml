@@ -1,6 +1,52 @@
-﻿@{
-    ViewData["Title"] = "Enter a Movie";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model MovieSubmission
 
-<p>Enter a movie here</p>
+<h1>Enter a Movie</h1>
+
+<form method="post">
+
+    <label asp-for="Title">Movie Title: </label>
+    <input asp-for="Title" required />
+    <br />
+    <br />
+    <label asp-for="Year">Year Released: </label>
+    <input asp-for="Year" required />
+    <br />
+    <br />
+    <label asp-for="Director">Director (first and last name): </label>
+    <input asp-for="Director" required />
+    <br />
+    <br />
+    <label asp-for="Rating">Movie Rating: </label>
+    <select asp-for="Rating" required>
+        <option value="G">G</option>
+        <option value="PG">PG</option>
+        <option value="PG13">PG-13</option>
+        <option value="R">R</option>
+    </select>
+    <br />
+    <br />
+    <label asp-for="Edited">Edited: </label>
+    <select asp-for="Edited">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <br />
+    <label asp-for="Notes">Notes on Movie: </label>
+    <input asp-for="Notes" maxlength="25" />
+    <br />
+    <br />
+    <button type="submit">Submit Movie</button>
+</form>
+
+<!--
+    Info: 
+    1. Category
+    2. Title
+    3. Year
+    4. Director
+    5. Rating - use a drop down menu (G,PG,PG-13,R)
+    6. Edited - yes/no (true/false) option. also not required.
+    7. Lent to - not required.
+    8. Notes - not required. also limit to 25 characters. 
+-->
