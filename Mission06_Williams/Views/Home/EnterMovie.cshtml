@@ -3,7 +3,10 @@
 <h1>Enter a Movie</h1>
 
 <form method="post">
-
+    <label asp-for="Category">Movie Category: </label>
+    <input asp-for="Category" required />
+    <br />
+    <br />
     <label asp-for="Title">Movie Title: </label>
     <input asp-for="Title" required />
     <br />
@@ -30,6 +33,10 @@
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
+    <br />
+    <br />
+    <label asp-for="LentTo">Lent Movie to: </label>
+    <input asp-for="LentTo"/>
     <br />
     <br />
     <label asp-for="Notes">Notes on Movie: </label>
