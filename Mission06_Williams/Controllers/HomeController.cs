@@ -40,6 +40,14 @@ namespace Mission06_Williams.Controllers
             return View("Confirmation", response);
         }
 
+        public IActionResult MoviesTable()
+        {
+            var movies = _context.MovieSubmissions
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movies);
+        }
+
      
     }
 }

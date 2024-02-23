@@ -1,0 +1,37 @@
+﻿@{
+}
+
+@model List<MovieSubmission>
+
+<table class="table  table-bordered">
+    <thead class="fw-bold">
+        <tr>
+            <td>Movie Category</td>
+            <td>Movie Title</td>
+            <td>Year Released</td>
+            <td>Director</td>
+            <td>Movie Rating</td>
+            <td>Edited</td>
+            <td>Lent to</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+
+    @foreach (var m in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@m.Category</td>
+                <td>@m.Title</td>
+                <td>@m.Year</td>
+                <td>@m.Director</td>
+                <td>@m.Rating</td>
+                <td>@m.Edited</td>
+                <td>@m.LentTo</td>
+                <td>@m.Notes</td>
+            </tr>
+        </tbody>
+    }
+
+   
+</table>
