@@ -44,6 +44,7 @@ namespace Mission06_Williams.Controllers
             return View("Confirmation", response);
         }
 
+        //This displays the table with all of the movies
         public IActionResult MoviesTable()
         {
             var movies = _context.Movies
@@ -52,6 +53,9 @@ namespace Mission06_Williams.Controllers
 
             return View(movies);
         }
+
+        //This one displays the "Enter Movie" page again with the information of the one the user   
+        //clicked on already displayed
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -64,6 +68,8 @@ namespace Mission06_Williams.Controllers
             return View("EnterMovie", recordToEdit);
         }
 
+     
+        //This one actually edits and updates the database 
         [HttpPost]
         public IActionResult Edit(Movies updatedInfo)
         {
@@ -72,6 +78,8 @@ namespace Mission06_Williams.Controllers
             return RedirectToAction("MoviesTable");
         }
         [HttpGet]
+
+        //This one displays the delete page
         public IActionResult Delete(int id)
         {
             var recordToDelete = _context.Movies
@@ -79,6 +87,8 @@ namespace Mission06_Williams.Controllers
 
             return View(recordToDelete);
         }
+
+        //This one does the actual deleting
         [HttpPost]
         public IActionResult Delete(Movies deletingInfo)
         {
