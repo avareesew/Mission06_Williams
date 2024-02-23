@@ -53,6 +53,39 @@ namespace Mission06_Williams.Controllers
             return View(movies);
         }
 
-     
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            return View("EnterMovie", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movies updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+            return RedirectToAction("MoviesTable");
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View(recordToDelete);
+        }
+        [HttpPost]
+        public IActionResult Delete(Movies deletingInfo)
+        {
+            _context.Movies.Remove(deletingInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("MoviesTable");
+        }
     }
 }

@@ -4,6 +4,7 @@
 
 <!--the form to submit a movie-->
 <form method="post">
+    <input type="hidden" asp-for="MovieId" />
     <label asp-for="Title">Movie Title: </label>
     <input asp-for="Title" required />
     <br />
