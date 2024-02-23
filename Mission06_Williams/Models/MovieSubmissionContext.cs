@@ -8,6 +8,9 @@ namespace Mission06_Williams.Models
         { 
         }
 
-        public DbSet<MovieSubmission> MovieSubmissions { get; set; }
+        public DbSet<Movies> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+
     }
 }

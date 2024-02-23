@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_Williams.Models;
 using SQLitePCL;
 using System.Diagnostics;
@@ -28,21 +29,25 @@ namespace Mission06_Williams.Controllers
         [HttpGet]
         public IActionResult EnterMovie()
         {
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
             return View("EnterMovie");
         }
 
         //Enter a Move Get Post for when a form is submitted
         [HttpPost]
-        public IActionResult EnterMovie(MovieSubmission response)
+        public IActionResult EnterMovie(Movies response)
         {
-            _context.MovieSubmissions.Add(response); //add record to the database
+            _context.Movies.Add(response); //add record to the database
             _context.SaveChanges();
             return View("Confirmation", response);
         }
 
         public IActionResult MoviesTable()
         {
-            var movies = _context.MovieSubmissions
+            var movies = _context.Movies
+                .Include(x => x.Category)
                 .OrderBy(x => x.Title).ToList();
 
             return View(movies);

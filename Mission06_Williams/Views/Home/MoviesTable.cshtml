@@ -1,18 +1,19 @@
 ﻿@{
 }
 
-@model List<MovieSubmission>
+@model List<Movies>
 
 <table class="table  table-bordered">
     <thead class="fw-bold">
         <tr>
-            <td>Movie Category</td>
             <td>Movie Title</td>
+            <td>Movie Category</td>
             <td>Year Released</td>
             <td>Director</td>
             <td>Movie Rating</td>
             <td>Edited</td>
             <td>Lent to</td>
+            <td>Copied to Plex</td>
             <td>Notes</td>
         </tr>
     </thead>
@@ -21,13 +22,14 @@
     {
         <tbody>
             <tr>
-                <td>@m.Category</td>
                 <td>@m.Title</td>
+                <td>@(m.Category != null ? m.Category.CategoryName : "")</td>
                 <td>@m.Year</td>
                 <td>@m.Director</td>
                 <td>@m.Rating</td>
                 <td>@m.Edited</td>
                 <td>@m.LentTo</td>
+                <td>@m.CopiedToPlex</td>
                 <td>@m.Notes</td>
             </tr>
         </tbody>

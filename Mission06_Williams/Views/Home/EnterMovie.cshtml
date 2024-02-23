@@ -1,19 +1,24 @@
-﻿@model MovieSubmission
+﻿@model Movies
 
 <h1>Enter a Movie</h1>
 
 <!--the form to submit a movie-->
 <form method="post">
-    <label asp-for="Category">Movie Category: </label>
-    <input asp-for="Category" required />
-    <br />
-    <br />
     <label asp-for="Title">Movie Title: </label>
     <input asp-for="Title" required />
     <br />
     <br />
+    <select asp-for="CategoryId">
+        <option value="">Select a Movie Category: </option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
+    <br />
+    <br />
     <label asp-for="Year">Year Released: </label>
-    <input asp-for="Year" required />
+    <input asp-for="Year" required min="1888" />
     <br />
     <br />
     <label asp-for="Director">Director (first and last name): </label>
@@ -40,21 +45,16 @@
     <input asp-for="LentTo"/>
     <br />
     <br />
+    <label asp-for="CopiedToPlex">Copied to Plex: </label>
+    <select asp-for="CopiedToPlex" required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <br />
     <label asp-for="Notes">Notes on Movie: </label>
     <input asp-for="Notes" maxlength="25" />
     <br />
     <br />
     <button type="submit">Submit Movie</button>
 </form>
-
-<!--
-    Info: 
-    1. Category
-    2. Title
-    3. Year
-    4. Director
-    5. Rating - use a drop down menu (G,PG,PG-13,R)
-    6. Edited - yes/no (true/false) option. also not required.
-    7. Lent to - not required.
-    8. Notes - not required. also limit to 25 characters. 
--->
